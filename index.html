@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Origin Engine Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --origin-orange: #ff6a00;
+    }
+    .text-origin { color: var(--origin-orange); }
+    .bg-origin { background-color: var(--origin-orange); }
+    .border-origin { border-color: var(--origin-orange); }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+  <div class="min-h-screen px-4 py-10">
+    <div class="bg-white rounded-2xl shadow-xl border border-gray-200 max-w-5xl mx-auto p-8 space-y-8">
+
+      <!-- HEADER + LOGO -->
+      <div class="text-center">
+        <div class="text-4xl font-extrabold text-origin mb-2">🌀 Origin Engine Dashboard</div>
+        <div class="text-sm text-gray-500">the super ultra epic game engine + mod thingy hehehe :D</div>
+      </div>
+
+      <!-- TABS -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Launcher Panel -->
+        <div class="p-4 border border-gray-300 rounded">
+          <h2 class="text-lg font-semibold text-origin mb-2">Launcher</h2>
+          <div class="space-y-2">
+            <input type="text" placeholder="where's ur game at lol" class="w-full px-3 py-2 bg-gray-100 border rounded" />
+            <div class="text-sm text-gray-600">Motor Town v1.2.3 + Origin Sync (soooo fancy!)</div>
+            <button onclick="wip()" class="w-full py-2 bg-origin text-white rounded font-semibold">Launch Game</button>
+          </div>
+        </div>
+
+        <!-- Motor Town Tools -->
+        <div class="p-4 border border-gray-300 rounded">
+          <h2 class="text-lg font-semibold text-origin mb-2">Motor Town Tools</h2>
+          <div class="space-y-2">
+            <button onclick="wip()" class="w-full bg-gray-100 py-2 rounded border">Sync Telemetry</button>
+            <button onclick="wip()" class="w-full bg-gray-100 py-2 rounded border">Patch Terrain</button>
+            <button onclick="wip()" class="w-full bg-gray-100 py-2 rounded border">Inject Vehicle</button>
+          </div>
+        </div>
+
+        <!-- Project Manager -->
+        <div class="p-4 border border-gray-300 rounded">
+          <h2 class="text-lg font-semibold text-origin mb-2">Projects</h2>
+          <input type="text" placeholder="new epic project name here lol" class="w-full px-3 py-2 bg-gray-100 border rounded mb-2" />
+          <button onclick="wip()" class="w-full py-2 bg-origin text-white rounded">Make It!</button>
+        </div>
+
+        <!-- Asset Studio -->
+        <div class="p-4 border border-gray-300 rounded">
+          <h2 class="text-lg font-semibold text-origin mb-2">Asset Studio</h2>
+          <div class="space-y-2">
+            <input type="file" class="block w-full text-sm text-gray-500" />
+            <button onclick="wip()" class="w-full py-2 bg-gray-200 rounded">Upload a thingy</button>
+          </div>
+        </div>
+
+        <!-- Mod Manager -->
+        <div class="p-4 border border-gray-300 rounded col-span-2">
+          <h2 class="text-lg font-semibold text-origin mb-4">Mods Installed!</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-gray-50 p-3 rounded border flex justify-between items-center">
+              <span>Clown Modpack v1</span><button onclick="wip()" class="text-origin text-sm">Remove</button>
+            </div>
+            <div class="bg-gray-50 p-3 rounded border flex justify-between items-center">
+              <span>Clown Modpack Expansion</span><button onclick="wip()" class="text-origin text-sm">Remove</button>
+            </div>
+            <div class="bg-gray-50 p-3 rounded border flex justify-between items-center">
+              <span>CHOPPER!</span><button onclick="wip()" class="text-origin text-sm">Remove</button>
+            </div>
+            <div class="bg-gray-50 p-3 rounded border flex justify-between items-center">
+              <span>Ram 1500</span><button onclick="wip()" class="text-origin text-sm">Remove</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mod Loader Settings -->
+        <div class="p-4 border border-gray-300 rounded">
+          <h2 class="text-lg font-semibold text-origin mb-2">Mod Stuff️</h2>
+          <label class="text-sm">Mod Loader</label>
+          <select class="w-full mt-1 mb-2 px-2 py-1 bg-gray-100 border rounded">
+            <option>Clown</option>
+            <option>FT</option>
+          </select>
+          <label class="text-sm">Auto-Updates</label>
+          <input type="checkbox" class="ml-2 scale-125 accent-origin">
+        </div>
+
+        <!-- Engine Tools -->
+        <div class="p-4 border border-gray-300 rounded">
+          <h2 class="text-lg font-semibold text-origin mb-2">Engine Tools</h2>
+          <button onclick="wip()" class="w-full bg-gray-100 py-2 rounded border mb-2">Switch Render System</button>
+          <button onclick="wip()" class="w-full bg-gray-100 py-2 rounded border mb-2">Lighting Settings</button>
+          <button onclick="wip()" class="w-full bg-gray-100 py-2 rounded border">Toggle Terrain Deform</button>
+        </div>
+
+        <!-- OriginNet Sync -->
+        <div class="p-4 border border-gray-300 rounded">
+          <h2 class="text-lg font-semibold text-origin mb-2">OriginNet</h2>
+          <button onclick="wip()" class="w-full py-2 bg-gray-100 border rounded">Connect to Server</button>
+        </div>
+
+        <!-- Build Tools -->
+        <div class="p-4 border border-gray-300 rounded">
+          <h2 class="text-lg font-semibold text-origin mb-2">Build & Export</h2>
+          <select class="w-full bg-gray-100 border rounded px-2 py-1">
+            <option>Export to Motor Town</option>
+            <option>Export Standalone</option>
+            <option>Export to OriginNet</option>
+          </select>
+          <button onclick="wip()" class="w-full py-2 mt-2 bg-origin text-white rounded">Build ittttt</button>
+        </div>
+
+        <!-- Preferences -->
+        <div class="p-4 border border-gray-300 rounded col-span-2">
+          <h2 class="text-lg font-semibold text-origin mb-2">Preferences</h2>
+          <div class="flex items-center justify-between mb-2">
+            <span>Developer Mode</span>
+            <input type="checkbox" class="scale-125 accent-origin">
+          </div>
+          <div class="flex items-center justify-between mb-2">
+            <span>Clown Shield</span>
+            <button onclick="toggleClownShield()" id="clownShieldBtn" class="px-4 py-2 rounded bg-green-500 text-white font-semibold">ENABLED</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="text-center text-sm text-gray-400 mt-12 border-t border-gray-200 pt-4">
+        Powered by <span class="text-origin font-semibold">Origin Engine</span><br/>
+        © 2025 WoofTech and WoofWorks. All rights reserved.
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    function toggleClownShield() {
+      const btn = document.getElementById('clownShieldBtn');
+      if (btn.innerText.includes('ENABLED')) {
+        btn.innerText = 'DISABLED';
+        btn.classList.remove('bg-green-500');
+        btn.classList.add('bg-red-500');
+      } else {
+        btn.innerText = 'ENABLED';
+        btn.classList.remove('bg-red-500');
+        btn.classList.add('bg-green-500');
+      }
+    }
+
+    function wip() {
+      alert("WORK IN PROGRESS!!!️");
+    }
+  </script>
+</body>
+</html>
