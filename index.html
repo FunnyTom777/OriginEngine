@@ -16,9 +16,9 @@
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans">
   <div class="min-h-screen px-4 py-10">
-    <div class="bg-white rounded-2xl shadow-xl border border-gray-200 max-w-5xl mx-auto p-8 space-y-8">
+    <div class="bg-white rounded-2xl shadow-xl border border-gray-200 max-w-6xl mx-auto p-8 space-y-8">
 
-      <!-- HEADER + LOGO -->
+      <!-- HEADER -->
       <div class="text-center">
         <div class="text-4xl font-extrabold text-origin mb-2">🌀 Origin Engine Dashboard</div>
         <div class="text-sm text-gray-500">the super ultra epic game engine + mod thingy hehehe :D</div>
@@ -82,6 +82,14 @@
           </div>
         </div>
 
+        <!-- VEHICLE PANEL -->
+        <div class="p-4 border border-gray-300 rounded col-span-2 max-h-[500px] overflow-y-scroll">
+          <h2 class="text-lg font-semibold text-origin mb-2">Vehicles (Enable/Disable)</h2>
+          <div id="vehicleList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 text-sm">
+            <!-- Vehicle toggles will be injected here -->
+          </div>
+        </div>
+
         <!-- Mod Loader Settings -->
         <div class="p-4 border border-gray-300 rounded">
           <h2 class="text-lg font-semibold text-origin mb-2">Mod Stuff️</h2>
@@ -102,7 +110,7 @@
           <button onclick="wip()" class="w-full bg-gray-100 py-2 rounded border">Toggle Terrain Deform</button>
         </div>
 
-        <!-- OriginNet Sync -->
+        <!-- OriginNet -->
         <div class="p-4 border border-gray-300 rounded">
           <h2 class="text-lg font-semibold text-origin mb-2">OriginNet</h2>
           <button onclick="wip()" class="w-full py-2 bg-gray-100 border rounded">Connect to Server</button>
@@ -159,6 +167,35 @@
     function wip() {
       alert("WORK IN PROGRESS!!!️");
     }
+
+    // Load vehicles.txt and generate toggles
+    fetch('vehicles.txt')
+      .then(res => res.text())
+      .then(data => {
+        const lines = data.split('\n').map(line => line.trim()).filter(Boolean);
+        const container = document.getElementById('vehicleList');
+        lines.forEach(name => {
+          const id = name.replace(/\W+/g, '_');
+          const label = document.createElement("label");
+          label.className = "flex items-center justify-between bg-gray-50 px-3 py-2 border rounded";
+
+          const span = document.createElement("span");
+          span.textContent = name;
+
+          const toggle = document.createElement("input");
+          toggle.type = "checkbox";
+          toggle.className = "accent-origin scale-125";
+          toggle.id = id;
+
+          label.appendChild(span);
+          label.appendChild(toggle);
+          container.appendChild(label);
+        });
+      })
+      .catch(err => {
+        document.getElementById('vehicleList').innerHTML = "<p class='text-red-600'>Failed to load vehicles.txt!</p>";
+        console.error("Error loading vehicles.txt:", err);
+      });
   </script>
 </body>
 </html>
